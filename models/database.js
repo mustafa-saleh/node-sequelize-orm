@@ -1,8 +1,9 @@
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize({
-  dialect: "sqlite",
-  storage: "main.sqlite",
+const { POSTGRES_DB, POSTGRES_USR, POSTGRES_PD } = process.env;
+const sequelize = new Sequelize(POSTGRES_DB, POSTGRES_USR, POSTGRES_PD, {
+  dialect: "postgres",
+  host: "localhost",
 });
 
 module.exports = sequelize;
